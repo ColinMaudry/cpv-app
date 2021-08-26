@@ -1,0 +1,16 @@
+<html>
+<head>
+    <title>CPV</title>
+</head>
+<body>
+    {% if cpvs %}
+        <ul>
+        {% for cpv in cpvs %}
+            <li>{{ cpv.id }}: {{ cpv.name }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No CPVs are available.</p>
+    {% endif %}
+</body>
+</html>
