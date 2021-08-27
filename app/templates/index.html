@@ -3,14 +3,19 @@
     <title>CPV</title>
 </head>
 <body>
-    {% if cpvs %}
+<form action="{% url 'app:index' %}" method="get">
+    <legend><h3>Rechercer un code CPV</h3></legend>
+    <input type="search" name="text" id="text"/>
+    <input type="submit" value="Rechercher"/>
+</form>
+    {% if search_results|length > 0 %}
         <ul>
-        {% for cpv in cpvs %}
-            <li>{{ cpv.id }}: {{ cpv.name }}</li>
+        {% for cpv in search_results %}
+            <li><a href="{% url 'app:code' cpv.id %}">{{ cpv.id }}: {{ cpv.name }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
-        <p>No CPVs are available.</p>
+        <p>Aucune code CPV ne correspond à votre recherche.</p>
     {% endif %}
 </body>
 </html>

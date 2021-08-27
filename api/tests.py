@@ -14,5 +14,6 @@ class CodeModelTests(TestCase):
         """
         client = Client()
         response = client.get(reverse('api:code', kwargs = {'cpv_id': '03111000-2'}))
-        self.assertIs(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'id : 03111000-2, name : Graines')
+
